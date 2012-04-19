@@ -36,7 +36,7 @@ if (Meteor.is_client) {
     'click .destroy': function (event) {
       Posts.remove(event.currentTarget.id);
       if(Posts.find().count() == 0) { 
-        var post = {title: 'Test post', author: 'georgel', content: default_message, date: 'April 11', timestamp: new Date()};
+        var post = {title: 'Meteor.js', author: 'georgel', content: default_message, date: 'April 11', timestamp: new Date()};
         Posts.insert(post);
       }
     }

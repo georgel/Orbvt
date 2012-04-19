@@ -3,7 +3,7 @@ Properties = new Meteor.Collection("Properties");
 
 Meteor.methods({ 
   test: function() { 
-    Posts.insert({title: "INSERTED", author: "bmelton", date: "April 12", content: "Inserted from method."});
+    Posts.insert({title: "INSERTED", author: "georgel", date: "April 12", content: "Inserted from method."});
   }
 });
 
@@ -14,7 +14,7 @@ Meteor.startup(function () {
     var default_message = "Hello world.";
     var post = {
 	title: 'Test post', 
-	author: 'bmelton', 
+	author: 'georgel', 
 	content: default_message, 
 	date: 'April 11', 
 	timestamp: new Date()
@@ -22,9 +22,8 @@ Meteor.startup(function () {
   }
 
   if(Properties.find().count() == 0) {
-    Properties.insert({name: "@bmelton",              type: "link", href : "http://twitter.com/bmelton/"});
-    Properties.insert({name: "github.com/bmelton",    type: "link", href : "http://github.com/bmelton/"});
-    Properties.insert({name: "sympodial.com",         type: "link", href : "http://sympodial.com/"});
+    Properties.insert({name: "@georgel",  		type: "link", href : "http://twitter.com/georgel/"});
+    Properties.insert({name: "github.com/georgel",   	type: "link", href : "http://github.com/georgel/"});
   }
   // Meteor.default_server.method_handlers['/Posts/insert'] = function () {};
   // Meteor.default_server.method_handlers['/Posts/remove'] = function () {};

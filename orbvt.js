@@ -1,7 +1,7 @@
 Posts = new Meteor.Collection("Orbvt");
-default_message = "This is the first post on the Orbvt (and cannot be destroyed), the somewhat ridiculous Svbtle clone built on the significantly less ridiculous Meteor application framework.  The admin console is *no longer* the Javascript console.  Now I have to build one."; 
+//default_message = "This is the first post on the Orbvt (and cannot be destroyed), the somewhat ridiculous Svbtle clone built on the significantly less ridiculous Meteor application framework.  The admin console is *no longer* the Javascript console.  Now I have to build one."; 
 
-Properties = new Meteor.Collection("Properties");
+Properties = new Meteor.Collection("OrbvtProperties");
 
 months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
@@ -9,13 +9,13 @@ if (Meteor.is_client) {
   Template.stamp.stamp = function() { 
     var d = new Date();
     month = months[d.getMonth()];
-    day   = d.getDay();
+    day   = d.getDate();
     year  = d.getFullYear();
     return month + "&nbsp;&nbsp;&nbsp;" + day + ",&nbsp;&nbsp;&nbsp;" + year ;
   };
   Template.stamp.events = {
     'click #new_post': function(event) { 
-      post = {title: 'New post', author: 'bmelton', content: new Date() + ' is when you created this new post.', date: 'April 11', timestamp: new Date()};
+      post = {title: 'New post', author: 'georgel', content: new Date() + ' is when you created this new post.', date: 'April 11', timestamp: new Date()};
       Posts.insert(post);
     }
   }
@@ -36,7 +36,7 @@ if (Meteor.is_client) {
     'click .destroy': function (event) {
       Posts.remove(event.currentTarget.id);
       if(Posts.find().count() == 0) { 
-        var post = {title: 'Test post', author: 'bmelton', content: default_message, date: 'April 11', timestamp: new Date()};
+        var post = {title: 'Test post', author: 'georgel', content: default_message, date: 'April 11', timestamp: new Date()};
         Posts.insert(post);
       }
     }
@@ -45,15 +45,14 @@ if (Meteor.is_client) {
 
 if (Meteor.is_server) {
   Meteor.startup(function () {
-    if(Posts.find().count() === 0) { 
+    if(Posts.find().count() < 0) { 
       var post = {title: 'Test post', author: 'bmelton', content: default_message, date: 'April 11', timestamp: new Date()};
       Posts.insert(post);
      }
 
     if(Properties.find().count() == 0) {
-      Properties.insert({name: "@bmelton",  		type: "link", href : "http://twitter.com/bmelton/"});
-      Properties.insert({name: "github.com/bmelton",   	type: "link", href : "http://github.com/bmelton/"});
-      Properties.insert({name: "sympodial.com", 	type: "link", href : "http://sympodial.com/"});
+      Properties.insert({name: "@georgel",  		type: "link", href : "http://twitter.com/georgel/"});
+      Properties.insert({name: "github.com/georgel",   	type: "link", href : "http://github.com/georgel/"});
     }
   });
 

@@ -1,5 +1,5 @@
 Posts = new Meteor.Collection("Orbvt");
-//default_message = "This is the first post on the Orbvt (and cannot be destroyed), the somewhat ridiculous Svbtle clone built on the significantly less ridiculous Meteor application framework.  The admin console is *no longer* the Javascript console.  Now I have to build one."; 
+default_message = "After hearing about Meteor.js, I couldn't wait to try it. So far it's amazing. We will see what I end up building with it :)";
 
 Properties = new Meteor.Collection("OrbvtProperties");
 
@@ -45,8 +45,8 @@ if (Meteor.is_client) {
 
 if (Meteor.is_server) {
   Meteor.startup(function () {
-    if(Posts.find().count() < 0) { 
-      var post = {title: 'Test post', author: 'bmelton', content: default_message, date: 'April 11', timestamp: new Date()};
+    if(Posts.find().count() === 0) { 
+      var post = {title: 'Meteor.js', author: 'georgel', content: default_message, date: 'April 19', timestamp: new Date()};
       Posts.insert(post);
      }
 
